@@ -1,0 +1,50 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Web Bsp Compiler</title>
+	<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon"/>
+	<link rel="bookmark" th:href="@{/favicon.ico}" type="image/x-icon"/>
+</head>
+<body>
+	<div>
+		<h1>Web Bsp Compiler</h1>
+	</div>
+	<hr/>
+	<div>
+		<h3>Upload Half-life map file</h3>
+		<form method="POST" enctype="multipart/form-data" action="/upload">
+			<table>
+				<tr><td>File to upload:</td><td><input type="file" name="file" /></td><td><input type="submit" value="Upload" /></td></tr>
+				<tr><td>Fill this if you want an email reminder after compiling:</td><td><input type="text" name="email" /></tr>
+			</table>
+		</form>
+		<h3>This website will compile your map to the <font color="Red">HIGHEST</font> standard</h3>
+		<h3>This means that the map needs to run the whole process(CSG BSP VIS RAD)</h3>
+	</div>
+	<hr/>
+	<div>
+		<h3>Download bsp file via code</h3>
+		<form action="/download" method="POST">
+			<table>
+				<tr><td>Extraction code:</td><td><input type="text" name="downloadCode" /></td><td><input type="submit" value="Download" /></td></tr>
+				<div th:if="${extractError}">
+					<h1 th:text="|Your code: ${extractError} is not correct!|"/>
+					<h3 th:text="|Reason: ${extractErrorReason}|"/>
+				</div>
+			</table>
+		</form>
+	</div>
+	<hr/>
+	<div>
+		<h3 text="Compiling List:"/>
+		<h4 th:text="|Now compiled file number:${compliedNum}|"/>
+		<h4>Now compiling list:</h4>
+		<ul>
+			<li th:each="file : ${files}">
+				<tr><td><h8 th:text="${file}"/></td></tr>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>

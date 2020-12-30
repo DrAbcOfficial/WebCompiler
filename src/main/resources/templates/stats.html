@@ -1,0 +1,19 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Web Bsp Compiler</title>
+	<link rel="icon" th:href="@{/favicon.ico}" type="image/x-icon"/>
+	<link rel="bookmark" th:href="@{/favicon.ico}" type="image/x-icon"/>
+</head>
+<body>
+	<div th:if="${message}">
+		<h1 th:text="${message}"/>
+	</div>
+	<div th:if="${uid}">
+		<hr/>
+		<tr><td><font color="Crimson"><h2 th:text="|Your file code is: ${uid}|"/></font></td></tr>
+		<tr><td><h2>Please keep it to download your bsp file</h2></td></tr>
+	</div>
+	<a href="/"><input type="button" value='Back'></a>
+</body>
+</html>
